@@ -40,6 +40,12 @@ class BsonUtilsTest {
         assertThat(BsonUtils.orEmptyDocument("").isEmpty()).isTrue();
         assertThat(BsonUtils.orEmptyDocument("{id:1}").isEmpty()).isFalse();
     }
+    
+    @Test
+    void expireAfterSecondsTest() {
+        assertThat(BsonUtils.orEmptyDocument("{expireAfterSeconds: NumberLong(\"60\")}").getLong("expireAfterSeconds"))
+                .isEqualTo(60L);
+    }
 
     @Test
     void orEmptyDocumentSpecialCharsTest() {
