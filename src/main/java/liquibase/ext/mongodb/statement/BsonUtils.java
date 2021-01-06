@@ -110,6 +110,9 @@ public final class BsonUtils {
         if (options.containsKey("name")) {
             indexOptions.name(options.getString("name"));
         }
+        if (options.containsKey("expireAfterSeconds")) {
+            indexOptions.expireAfter(options.getLong("expireAfterSeconds"), TimeUnit.SECONDS);
+        }
         return indexOptions;
     }
 
